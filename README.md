@@ -78,3 +78,6 @@ MIT
 
 ## Contact
 hassiweb: https://twitter.com/hassiweb
+
+## More information
+Postscript (in Japanese): https://hassiweb-programming.blogspot.com/2019/01/oanda-chart-viewer.html
