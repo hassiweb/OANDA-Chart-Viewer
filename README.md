@@ -1,5 +1,7 @@
 # OANDA Chart Viewer
 
+![Viewer Image](https://github.com/hassiweb/OANDA-Chart-Viewer/blob/master/viewer_image.png)
+
 ## How to Install
 
 ```
