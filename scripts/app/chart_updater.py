@@ -52,10 +52,11 @@ def reset_database(config, client):
 
 
 
-def store_candles(client, measurement, candles):
+def store_candles(client, measurement, candles, tz):
     ## Loop for the retrieved data
     for candle in candles['candles']:
-        time = iso_to_dt(candle['time'], 'US/Eastern')
+        time = iso_to_dt(candle['time'], 'UTC')
+#        time = candle['time']
         json_body = [
                 {
                         "measurement": measurement,
@@ -122,7 +123,8 @@ def init(config, client):
     # Retrieve candle charts
     ## Set duration
     from_date = iso_to_dt(config['oanda']['from_date'], config['oanda']['timezone'])
-    to_date = datetime.datetime.now(tz=pytz.timezone(config['oanda']['timezone']))
+    from_date = from_date.astimezone(pytz.timezone('UTC'))
+    to_date = datetime.datetime.now(tz=pytz.timezone('UTC'))
     gra_dt = get_granularity(config['oanda']['granularity'])
     currency_pairs = config['oanda']['instruments'].replace(' ','').split(',')
     
@@ -134,8 +136,8 @@ def init(config, client):
         iter_from = from_date
         for iter in range(0, max_iter):
             iter_to = iter_from + gra_dt*max_count
-            if iter_to > datetime.datetime.now(tz=pytz.timezone(config['oanda']['timezone'])):
-                iter_to = datetime.datetime.now(tz=pytz.timezone(config['oanda']['timezone']))
+            if iter_to > datetime.datetime.now(tz=pytz.timezone('UTC')):
+                iter_to = datetime.datetime.now(tz=pytz.timezone('UTC'))
             
             print(iter_from, iter_to)
             
@@ -150,7 +152,7 @@ def init(config, client):
             candles = get_candles(config, params, currency_pair)
         
             # Insert the retrieved candle data into InfluxDB
-            store_candles(client, measurement, candles, )
+            store_candles(client, measurement, candles, 'UTC')
         
             iter_from = iter_to + gra_dt
 
@@ -178,7 +180,7 @@ def update(config, client):
         candles = get_candles(config, params, currency_pair)
     
         # Insert the retrieved candle data into InfluxDB
-        store_candles(client, measurement, candles)
+        store_candles(client, measurement, candles, config['oanda']['timezone'])
 
 
 
@@ -191,6 +193,20 @@ if __name__ == '__main__':
     config = configparser.ConfigParser()
     config.read('./oanda.conf')
     config.read('./influxdb.conf')
+
+    # Check if there is "oanda" database in InfluxDB
+    client = InfluxDBClient(host=config['influxdb']['host'], \
+                            port=config['influxdb']['port'], \
+                            username=config['influxdb']['username'], \
+                            password=config['influxdb']['password'])
+    db_list = client.get_list_database()
+    exist_db = False
+    for db in db_list:
+        if config['influxdb']['database'] == db['name']:
+            exist_db = True
+    if exist_db == False:
+        client.create_database(config['influxdb']['database'])
+    client.close()
 
     # Create InfluxDB client object
     client = InfluxDBClient(host=config['influxdb']['host'], \

@@ -3,6 +3,6 @@ oandapyV20==0.6.3
 pytz==2018.7
 configparser
 argparse
-pandas
+pandas==0.23.4
 sklearn==0.0
 ta==0.3.8

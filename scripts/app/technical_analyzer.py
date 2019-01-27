@@ -63,7 +63,7 @@ if __name__ == '__main__':
         analysis = analyze(results[measurement])
     
         ### Insert data
-        client.write_points(analysis, measurement, {'currency_pair':currency_pair}, time_precision='s', database='oanda')
+        client.write_points(analysis, measurement, {'currency_pair':currency_pair}, time_precision='s', database=config['influxdb']['database'])
     
     client.close()
         
