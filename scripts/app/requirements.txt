@@ -1,0 +1,8 @@
+influxdb==5.2.1
+oandapyV20==0.6.3
+pytz==2018.7
+configparser
+argparse
+pandas
+sklearn==0.0
+ta==0.3.8

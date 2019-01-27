@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/module.js"],"names":["CandleStickCtrl"],"mappings":";;;;;;;;AAASA,qB,qBAAAA,e;;;2BAIPA,e","file":"module.js","sourcesContent":["import { CandleStickCtrl } from './candlestick_ctrl';\nimport './indicators_ctrl';\n\nexport {\n  CandleStickCtrl as PanelCtrl,\n};\n"]}

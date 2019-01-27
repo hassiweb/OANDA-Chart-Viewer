@@ -1,0 +1,1167 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "barColor": "#000000",
+      "bearColor": "#ff4a3a",
+      "bullColor": "#26ff42",
+      "candlestickWidth": 2,
+      "colorizeTooltip": true,
+      "datasource": "My InfluxDB Server",
+      "dojiColor": "#c8c9ca",
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "indicators": [],
+      "labelY1": null,
+      "labelY2": null,
+      "links": [],
+      "maxDataPoints": "520",
+      "mode": "color",
+      "seriesOverrides": [
+        {
+          "alias": "daily.mean",
+          "bars": false,
+          "color": "#bf1b00",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "daily.max",
+          "color": "#EAB839",
+          "fill": 0,
+          "linewidth": 1
+        },
+        {
+          "alias": "volume",
+          "bars": true,
+          "color": "#0a50a1",
+          "fill": 0,
+          "lines": false,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 2,
+          "zindex": 0
+        },
+        {
+          "alias": "5 day moving average",
+          "bars": false,
+          "color": "#508642",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 3,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "20 day moving average",
+          "bars": false,
+          "color": "#e5ac0e",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 3,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "75 day moving average",
+          "bars": false,
+          "color": "#bf1b00",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 3,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "Bollinger band +σ",
+          "bars": false,
+          "color": "#99440a",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "Bollinger band +2σ",
+          "bars": false,
+          "color": "#890f02",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "Bollinger band +3σ",
+          "bars": false,
+          "color": "#58140c",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "Bollinger band -σ",
+          "bars": false,
+          "color": "#64b0c8",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "Bollinger band -2σ",
+          "bars": false,
+          "color": "#0a50a1",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        },
+        {
+          "alias": "Bollinger band -3σ",
+          "bars": false,
+          "color": "#052b51",
+          "fill": 0,
+          "lines": true,
+          "linewidth": 1,
+          "pointradius": 5,
+          "points": false,
+          "yaxis": 1,
+          "zindex": 0
+        }
+      ],
+      "solidColor": "#000000",
+      "swapYaxes": true,
+      "targets": [
+        {
+          "alias": "open",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "open"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "first"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "high",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "high"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "close",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "close"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "low",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "low"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "min"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "volume",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "volume"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "5 day moving average",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "5-Day SMA"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "20 day moving average",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "20-Day SMA"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "75 day moving average",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "75-Day SMA"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Bollinger band +σ",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BB +1sigma"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Bollinger band +2σ",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BB +2sigma"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Bollinger band +3σ",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "K",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BB +3sigma"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Bollinger band -σ",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "L",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BB -1sigma"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Bollinger band -2σ",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BB -2sigma"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Bollinger band -3σ",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "N",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "BB -3sigma"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Candlechart",
+      "tooltipFormat": "YYYY-MM-DD HH:mm:ss",
+      "transparentTooltip": false,
+      "type": "ilgizar-candlestick-panel",
+      "widthMode": "auto"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "My InfluxDB Server",
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 4,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "MACD",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "MACD (12-16)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "Signal",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "MACD Signal (12-26-9)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "MACD",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 4,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": " ",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": 4
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "My InfluxDB Server",
+      "fill": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "%K",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Stochastics %K (14 Day)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        },
+        {
+          "alias": "%D",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "D",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Stochastics %D (14 Day)"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "currency_pair",
+              "operator": "=",
+              "value": "USD_JPY"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Stochastics",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 3,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "100",
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": " ",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1y",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "USD_JPY",
+  "uid": "qXZrWHlmz",
+  "version": 1
+}

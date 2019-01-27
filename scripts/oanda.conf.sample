@@ -1,0 +1,9 @@
+[oanda]
+account_id = xxx-xxx-xxxxxxx-xxx
+access_token = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+environment = practice
+from_date = 2018-01-01T00:00:00Z
+timezone = Asia/Tokyo
+granularity = D
+instruments = USD_JPY, EUR_JPY, EUR_USD
+
