@@ -9,6 +9,7 @@ import configparser
 from influxdb import DataFrameClient
 import pandas as pd
 import ta
+import os
 
 
 def analyze(data):
@@ -44,15 +45,24 @@ def analyze(data):
 if __name__ == '__main__':
     ## Read OANDA configurations
     config = configparser.ConfigParser()
-    config.read('./influxdb.conf')
+    SCRIPT_PATH = os.path.abspath(os.path.dirname(__file__))
 
+    influxdb_config = SCRIPT_PATH + '/influxdb.conf'
+    if os.path.exists(influxdb_config):
+        config.read(influxdb_config)
+    else:
+        exit("'influxdb.conf' is not found.")
     client = DataFrameClient(host=config['influxdb']['host'], \
                             port=config['influxdb']['port'], \
                             username=config['influxdb']['username'], \
                             password=config['influxdb']['password'], \
                             database=config['influxdb']['database'])
     
-    config.read('./oanda.conf')
+    oanda_config = SCRIPT_PATH + '/oanda.conf'
+    if os.path.exists(oanda_config):
+        config.read(oanda_config)
+    else:
+        exit("'oanda.conf' is not found.") 
     currency_pairs = config['oanda']['instruments'].replace(' ','').split(',')
     measurement = config['oanda']['granularity']
     

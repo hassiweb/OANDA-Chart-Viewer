@@ -3,14 +3,16 @@ services:
   influxdb:
     image: influxdb:1.7.2
     ports:
-      - "8086:8086"
+      - "18086:8086"
     volumes:
       - ./influxdb/data:/var/lib/influxdb
       - ./influxdb/backups:/backups
+    restart: always
+
   grafana:
     image: grafana/grafana:5.3.2
     ports:
-      - "3000:3000"
+      - "13000:3000"
     volumes:
       - ./grafana/dashboards-yml:/etc/grafana/provisioning/dashboards
       - ./grafana/datasources-yml:/etc/grafana/provisioning/datasources
@@ -18,7 +20,31 @@ services:
       - ./grafana/plugins:/var/lib/grafana/plugins
     depends_on:
       - influxdb
-  script:
-    build: ./scripts
+    restart: always
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    restart: always
+
+  airflow:
+    build: ./airflow
+    restart: always
     depends_on:
       - influxdb
+    environment:
+      - LOAD_EX=n
+      - EXECUTOR=Local
+    volumes:
+       - ./airflow/dags:/usr/local/airflow/dags
+    ports:
+      - "18080:8080"
+    command: webserver
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3

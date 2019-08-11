@@ -15,7 +15,7 @@ from influxdb import InfluxDBClient
 import configparser
 import pytz
 import argparse
-
+import os
 
 def iso_to_dt(iso_str, tz):
     dt = None
@@ -191,8 +191,17 @@ if __name__ == '__main__':
 
     # Read OANDA configurations
     config = configparser.ConfigParser()
-    config.read('./oanda.conf')
-    config.read('./influxdb.conf')
+    SCRIPT_PATH = os.path.abspath(os.path.dirname(__file__))
+    oanda_config = SCRIPT_PATH + '/oanda.conf'
+    influxdb_config = SCRIPT_PATH + '/influxdb.conf'
+    if os.path.exists(oanda_config):
+        config.read(oanda_config)
+    else:
+        exit("'oanda.conf' is not found.")
+    if os.path.exists(influxdb_config):
+        config.read(influxdb_config)
+    else:
+        exit("'influxdb.conf' is not found.")
 
     # Check if there is "oanda" database in InfluxDB
     client = InfluxDBClient(host=config['influxdb']['host'], \
