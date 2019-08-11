@@ -1,5 +1,7 @@
 # OANDA Chart Viewer
 
+![Viewer Image](https://github.com/hassiweb/OANDA-Chart-Viewer/blob/master/viewer_image.png)
+
 ## How to Install
 
 ```
@@ -76,3 +78,6 @@ MIT
 
 ## Contact
 hassiweb: https://twitter.com/hassiweb
+
+## More information
+Postscript (in Japanese): https://hassiweb-programming.blogspot.com/2019/01/oanda-chart-viewer.html
